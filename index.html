@@ -1,94 +1,309 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" data-lang="da">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Milo · Privatlivspolitik / Privacy Policy</title>
+<title>Milo · Din løbemakker</title>
+<meta name="description" content="Milo er din løbemakker fra sofaen til 5 km og videre: en løbeplan der tilpasser sig dig, stemme-coach, Apple Watch og grafer over hver tur.">
+<meta property="og:title" content="Milo · Din løbemakker">
+<meta property="og:description" content="Fra sofaen til 5 km og videre, i dit eget tempo.">
+<meta property="og:image" content="img/icon.png">
+<link rel="icon" href="img/favicon.png">
 <style>
-  :root { color-scheme: light dark; --accent: #ff7a37; }
-  body { font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; max-width: 680px; margin: 0 auto; padding: 32px 20px 64px; }
-  h1 { font-size: 30px; margin-bottom: 4px; }
-  h2 { font-size: 21px; margin-top: 36px; }
-  .updated { color: #888; margin-top: 0; }
-  hr { border: none; border-top: 1px solid #8884; margin: 48px 0; }
-  a { color: var(--accent); }
+  :root {
+    --accent: #ff7a37;
+    --accent-strong: #f0601a;
+    --accent-soft: #fff0e7;
+    --bg: #fbf8f5;
+    --card: #ffffff;
+    --text: #1d1b1a;
+    --muted: #6d6660;
+    --line: #ece5de;
+    --shadow: 0 18px 40px rgba(60, 30, 10, 0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: #ff8e4d;
+      --accent-strong: #ffa36d;
+      --accent-soft: #3a2519;
+      --bg: #141211;
+      --card: #1f1c1a;
+      --text: #f4efeb;
+      --muted: #aaa19a;
+      --line: #2f2a27;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  html[data-lang="da"] [lang="en"], html[data-lang="en"] [lang="da"] { display: none !important; }
+  a { color: var(--accent-strong); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent);
+           backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--text); text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .lang { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px;
+          padding: 6px 14px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding: 72px 0 56px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; margin: 0 0 18px; letter-spacing: -0.02em; }
+  .hero h1 span.accent { color: var(--accent); }
+  .hero p.lead { font-size: 20px; color: var(--muted); margin: 0 0 28px; max-width: 34em; }
+  .badge { display: inline-flex; align-items: center; gap: 10px; background: var(--text); color: var(--bg);
+           border-radius: 14px; padding: 12px 20px; font-weight: 600; }
+  .badge small { display: block; font-weight: 500; opacity: 0.75; font-size: 12px; }
+  .hero-note { margin-top: 14px; font-size: 14px; color: var(--muted); }
+  .phones { position: relative; height: 560px; }
+  .phone { position: absolute; width: 250px; border-radius: 36px; box-shadow: var(--shadow); border: 6px solid #111; background: #111; }
+  .phone.back { right: 0; top: 40px; transform: rotate(5deg); opacity: 0.95; }
+  .phone.front { left: 10px; top: 0; transform: rotate(-3deg); }
+  .phone img { width: 100%; display: block; border-radius: 30px; }
+
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .section-lead { color: var(--muted); font-size: 19px; margin: 0 0 36px; max-width: 40em; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+  .feature .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent);
+                   display: grid; place-items: center; font-size: 22px; margin-bottom: 14px; }
+  .feature h3 { margin: 0 0 6px; font-size: 19px; }
+  .feature p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  .shots { display: flex; gap: 20px; overflow-x: auto; padding: 8px 4px 24px; scroll-snap-type: x mandatory; }
+  .shot { flex: 0 0 220px; scroll-snap-align: start; margin: 0; }
+  .shot img { width: 100%; border-radius: 26px; border: 5px solid #111; background: #111; box-shadow: var(--shadow); display: block; }
+  .shot figcaption { margin-top: 12px; font-size: 15px; color: var(--muted); text-align: center; }
+
+  .watch { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; background: var(--card);
+           border: 1px solid var(--line); border-radius: 28px; padding: 40px; }
+  .watch-imgs { display: flex; gap: 16px; justify-content: center; }
+  .watch-imgs img { width: 150px; border-radius: 38px; border: 8px solid #111; background: #111; box-shadow: var(--shadow); }
+  .watch ul { padding-left: 20px; margin: 0; color: var(--muted); }
+  .watch li { margin: 6px 0; }
+
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 32px; }
+  .plan.plus { border: 2px solid var(--accent); }
+  .plan h3 { margin: 0; font-size: 24px; }
+  .plan .price { font-size: 17px; color: var(--muted); margin: 6px 0 18px; }
+  .plan .price strong { color: var(--text); font-size: 28px; }
+  .plan ul { margin: 0; padding: 0; list-style: none; }
+  .plan li { padding: 8px 0 8px 30px; position: relative; border-top: 1px solid var(--line); }
+  .plan li:first-child { border-top: none; }
+  .plan li::before { content: "✓"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+
+  .privacy { text-align: center; background: var(--accent-soft); border-radius: 28px; padding: 48px 24px; }
+  .privacy p { max-width: 36em; margin: 0 auto 16px; font-size: 19px; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 28px; }
+  footer a { color: var(--muted); }
+  .disclaimer { font-size: 13px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 40px 0 24px; gap: 24px; }
+    .phones { height: 440px; max-width: 360px; margin: 0 auto; width: 100%; }
+    .phone { width: 190px; border-radius: 28px; }
+    .phone img { border-radius: 23px; }
+    .features { grid-template-columns: 1fr; }
+    .watch { grid-template-columns: 1fr; padding: 28px 20px; }
+    .watch-imgs img { width: 120px; border-radius: 30px; }
+    .plans { grid-template-columns: 1fr; }
+    section { padding: 40px 0; }
+  }
+  @media (min-width: 861px) and (max-width: 1000px) { .features { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/icon.png" alt="">Milo</a>
+    <button class="lang" id="lang" type="button" aria-label="Change language"><span lang="da">English</span><span lang="en">Dansk</span></button>
+  </div>
+</header>
 
-<h1>Milo · Privatlivspolitik</h1>
-<p class="updated">Senest opdateret: 25. september 2026</p>
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1><span lang="da">Din løbemakker fra sofaen til <span class="accent">5 km</span> og videre.</span><span lang="en">Your run buddy from the couch to <span class="accent">5 km</span> and beyond.</span></h1>
+      <p class="lead" lang="da">Milo giver dig en løbeplan, der tilpasser sig dig. Den guider hver tur med stemmen, på Apple Watch og på låseskærmen, og rykker dig frem, når du er klar.</p>
+      <p class="lead" lang="en">Milo gives you a running plan that adapts to you. It guides every run with its voice, on Apple Watch and on the Lock Screen, and moves you forward when you're ready.</p>
+      <div class="badge">
+        <span style="font-size:24px">🏃</span>
+        <span><small lang="da">Kommer snart</small><small lang="en">Coming soon</small><span lang="da">til iPhone og Apple Watch</span><span lang="en">for iPhone and Apple Watch</span></span>
+      </div>
+      <p class="hero-note" lang="da">Gratis at komme i gang. Ingen konto, ingen reklamer.</p>
+      <p class="hero-note" lang="en">Free to get started. No account, no ads.</p>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone back"><img data-img="3-charts" alt=""></div>
+      <div class="phone front"><img data-img="1-today" alt=""></div>
+    </div>
+  </div>
 
-<p>Milo er en løbeapp, der hjælper dig fra sofaen til 5 km. Kort sagt: <strong>Milo sender ingen af dine data til os eller andre.</strong> Der er ingen konto, ingen reklamer, ingen analyseværktøjer og ingen sporing.</p>
+  <section id="features">
+    <h2><span lang="da">Alt hvad du skal bruge til at komme i gang</span><span lang="en">Everything you need to get going</span></h2>
+    <p class="section-lead" lang="da">Fortæl Milo, hvor længe du kan løbe i dag, og hvornår du vil træne. Resten klarer Milo.</p>
+    <p class="section-lead" lang="en">Tell Milo how long you can run today and when you want to train. Milo takes care of the rest.</p>
+    <div class="features">
+      <div class="feature"><div class="icon">↗</div>
+        <h3><span lang="da">En plan der lytter</span><span lang="en">A plan that listens</span></h3>
+        <p lang="da">Efter hver tur ser Milo, om du gik i løbeintervallerne. Så rykker du frem, gentager trinnet eller tager et skridt tilbage.</p>
+        <p lang="en">After each run Milo checks whether you walked in the run intervals, and moves you forward, repeats the step or takes a step back.</p></div>
+      <div class="feature"><div class="icon">🎧</div>
+        <h3><span lang="da">Stemme-coach</span><span lang="en">Voice coach</span></h3>
+        <p lang="da">Milo siger, hvornår du skal løbe og gå, og skruer ned for din musik i stedet for at stoppe den.</p>
+        <p lang="en">Milo tells you when to run and walk, and turns your music down instead of stopping it.</p></div>
+      <div class="feature"><div class="icon">⌚︎</div>
+        <h3>Apple Watch</h3>
+        <p lang="da">Start fra uret, se intervallet, tempoet og pulsen, og mærk et tryk på håndleddet ved hvert skift.</p>
+        <p lang="en">Start from your watch, see the interval, your pace and heart rate, and feel a tap at every change.</p></div>
+      <div class="feature"><div class="icon">📈</div>
+        <h3><span lang="da">Grafer over hver tur</span><span lang="en">Charts for every run</span></h3>
+        <p lang="da">Se tempoet gennem turen, dine kilometertider og tempoet i hvert interval.</p>
+        <p lang="en">See your pace through the run, your splits and the pace of every interval.</p></div>
+      <div class="feature"><div class="icon">🔒</div>
+        <h3><span lang="da">På låseskærmen</span><span lang="en">On the Lock Screen</span></h3>
+        <p lang="da">Intervallet og nedtællingen i Dynamic Island og på låseskærmen. Sig "Start min løbetur i Milo" til Siri.</p>
+        <p lang="en">The interval and its countdown in the Dynamic Island and on the Lock Screen. Say "Start my run in Milo" to Siri.</p></div>
+      <div class="feature"><div class="icon">📅</div>
+        <h3><span lang="da">Løb når det passer dig</span><span lang="en">Run when it suits you</span></h3>
+        <p lang="da">Faste ugedage eller et antal gange om ugen. Misser du en dag, rykker planen bare med.</p>
+        <p lang="en">Fixed weekdays or a number of times a week. Miss a day and the plan simply moves with you.</p></div>
+    </div>
+  </section>
 
-<h2>Hvad Milo gemmer, og hvor</h2>
-<ul>
-  <li><strong>Din plan og dine indstillinger</strong> (trin, rytme, rutelængde, påmindelser) gemmes på din iPhone.</li>
-  <li><strong>Dine løbeture</strong> (tidspunkt, varighed, distance, tempo, rute og Milos vurdering) gemmes på din iPhone.</li>
-  <li>Hvis iCloud er slået til for Milo, synkroniseres plan og løbeture via <strong>din egen private iCloud</strong>. Vi har ikke adgang til dem.</li>
-</ul>
+  <section id="screens">
+    <h2><span lang="da">Sådan ser det ud</span><span lang="en">Take a look</span></h2>
+    <div class="shots">
+      <figure class="shot"><img data-img="1-today" alt=""><figcaption><span lang="da">Din næste træning</span><span lang="en">Your next training</span></figcaption></figure>
+      <figure class="shot"><img data-img="2-run" alt=""><figcaption><span lang="da">Guidet hele vejen</span><span lang="en">Guided all the way</span></figcaption></figure>
+      <figure class="shot"><img data-img="3-charts" alt=""><figcaption><span lang="da">Tempo og kilometertider</span><span lang="en">Pace and splits</span></figcaption></figure>
+      <figure class="shot"><img data-img="4-progress" alt=""><figcaption><span lang="da">Dine fremskridt</span><span lang="en">Your progress</span></figcaption></figure>
+      <figure class="shot"><img data-img="5-faster" alt=""><figcaption><span lang="da">Bliv hurtigere</span><span lang="en">Get faster</span></figcaption></figure>
+      <figure class="shot"><img data-img="6-goal" alt=""><figcaption><span lang="da">Del dit mål</span><span lang="en">Share your goal</span></figcaption></figure>
+    </div>
+  </section>
 
-<h2>Placering</h2>
-<p>Milo bruger din placering <strong>kun mens et løb er i gang</strong> til at måle distance, tempo og rute, se om du gik i løbeintervallerne og vide, hvornår du er hjemme igen. Placeringen bruges også med låst skærm under løbet. Den gemmes kun som ruten på din løbetur og forlader ikke din enhed (bortset fra din egen iCloud, se ovenfor). Du kan løbe uden GPS.</p>
+  <section id="watch">
+    <div class="watch">
+      <div class="watch-imgs" aria-hidden="true">
+        <img data-img="watch-running" alt="">
+        <img data-img="watch-fast" alt="">
+      </div>
+      <div>
+        <h2><span lang="da">Lad telefonen blive i lommen</span><span lang="en">Keep your iPhone in your pocket</span></h2>
+        <ul lang="da">
+          <li>Start dagens træning direkte fra uret</li>
+          <li>Nedtælling, tempo og puls på håndleddet</li>
+          <li>Pause, afslut og vælg "Gå resten" på uret</li>
+          <li>Turen gemmes i Sundhed med puls og tæller i dine ringe</li>
+          <li>Komplikation med din næste træningsdag</li>
+        </ul>
+        <ul lang="en">
+          <li>Start today's training right from your watch</li>
+          <li>Countdown, pace and heart rate on your wrist</li>
+          <li>Pause, end and choose "Walk the rest" on the watch</li>
+          <li>Saved to Health with heart rate, counting toward your rings</li>
+          <li>A complication with your next training day</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<h2>Apple Sundhed</h2>
-<p>Hvis du tillader det, gemmer Milo dine løbeture i Apple Sundhed som træninger med distance og rute, så de vises i Fitness og kan hentes af andre apps, du selv giver adgang (fx Strava). Ture, du starter på Apple Watch, gemmes af uret med puls og aktiv energi. Milo <strong>læser kun</strong> din puls, og kun på uret, mens et løb er i gang, for at vise den på skærmen. Milo læser ikke andre data fra Apple Sundhed. Data fra Apple Sundhed bruges aldrig til reklamer eller deles med andre. Du kan slå det fra under Indstillinger i Milo og styre adgangen under Indstillinger → Anonymitet og sikkerhed → Sundhed → Milo.</p>
+  <section id="plans">
+    <h2><span lang="da">Gratis fra sofaen til 5 km</span><span lang="en">Free from the couch to 5 km</span></h2>
+    <p class="section-lead" lang="da">Hele vejen til 5 km er gratis, også på Apple Watch. Vil du længere eller hurtigere, er der Milo Plus.</p>
+    <p class="section-lead" lang="en">The whole way to 5 km is free, on Apple Watch too. To go further or faster, there's Milo Plus.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3><span lang="da">Gratis</span><span lang="en">Free</span></h3>
+        <p class="price"><strong>0 kr</strong></p>
+        <ul lang="da">
+          <li>0–5 km: 27 trin fra korte løbeintervaller til 5 km uden pause</li>
+          <li>Stemme-coach, GPS og ruter</li>
+          <li>Apple Watch-appen</li>
+          <li>Grafer, fremskridt og Apple Sundhed</li>
+        </ul>
+        <ul lang="en">
+          <li>0–5 km: 27 steps from short run intervals to 5 km without stopping</li>
+          <li>Voice coach, GPS and routes</li>
+          <li>The Apple Watch app</li>
+          <li>Charts, progress and Apple Health</li>
+        </ul>
+      </div>
+      <div class="plan plus">
+        <h3>Milo Plus</h3>
+        <p class="price" lang="da"><strong>29 kr</strong> om måneden eller 179 kr om året, med en uge gratis. Eller 399 kr én gang.</p>
+        <p class="price" lang="en"><strong>29 kr</strong> a month or 179 kr a year, with a week free. Or 399 kr once.</p>
+        <ul lang="da">
+          <li>10 km-planen, når du har løbet 5 km</li>
+          <li>Videre til halvmaraton (21,1 km)</li>
+          <li>5 km hurtigere: mod en måltid på 35, 30, 27 eller 25 min</li>
+          <li>10 km hurtigere: mod en måltid på 70, 60, 55 eller 50 min</li>
+        </ul>
+        <ul lang="en">
+          <li>The 10 km plan, once you've run 5 km</li>
+          <li>On to a half marathon (21.1 km)</li>
+          <li>5 km faster: toward a goal time of 35, 30, 27 or 25 min</li>
+          <li>10 km faster: toward a goal time of 70, 60, 55 or 50 min</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<h2>Apple Watch</h2>
-<p>Starter du en tur på Apple Watch, bruger uret sin placering under løbet og sender den direkte til Milo på din iPhone, som følger turen. Uret og telefonen taler direkte sammen via Apples forbindelse mellem dem, ikke via os. Uret gemmer din næste træning, så urskiven kan vise den.</p>
+  <section id="privacy">
+    <div class="privacy">
+      <h2><span lang="da">Privat fra start</span><span lang="en">Private from the start</span></h2>
+      <p lang="da">Ingen konto, ingen reklamer, ingen sporing. Dine data bliver hos dig: på din iPhone, i din egen iCloud og, hvis du vil, i Apple Sundhed.</p>
+      <p lang="en">No account, no ads, no tracking. Your data stays with you: on your iPhone, in your own iCloud and, if you like, in Apple Health.</p>
+      <a href="privacy/"><span lang="da">Læs privatlivspolitikken</span><span lang="en">Read the privacy policy</span></a>
+    </div>
+  </section>
+</main>
 
-<h2>Køb</h2>
-<p>Milo Plus købes gennem Apple. Apple står for betalingen, og Milo får ingen betalingsoplysninger; appen får kun at vide, om du har Milo Plus.</p>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Milo</span>
+    <span><span lang="da">Kontakt</span><span lang="en">Contact</span>: <a href="mailto:skockharvej@gmail.com">skockharvej@gmail.com</a></span>
+    <a href="privacy/"><span lang="da">Privatlivspolitik</span><span lang="en">Privacy policy</span></a>
+    <span class="disclaimer" lang="da">Tal med din læge, før du starter, hvis du er i tvivl om, hvorvidt du kan tåle at løbe.</span>
+    <span class="disclaimer" lang="en">If you're unsure whether running is right for you, talk to your doctor before you start.</span>
+  </div>
+</footer>
 
-<h2>Påmindelser</h2>
-<p>Påmindelser om træningsdage er lokale notifikationer, som din iPhone selv planlægger. Der bruges ingen server.</p>
-
-<h2>Sletning</h2>
-<p>Du kan slette en løbetur i Milo under Fremskridt → Historik (stryg til venstre). "Nulstil plan" i Indstillinger starter planen forfra. Sletter du appen, slettes alt, den har gemt på din iPhone. Er iCloud slået til, sletter du Milos kopi i iCloud under Indstillinger → [dit navn] → iCloud → Administrer lagerplads → Milo. Træninger, der er gemt i Apple Sundhed, slettes i Sundhed-appen.</p>
-
-<h2>Børn</h2>
-<p>Milo indsamler ikke data om nogen, heller ikke børn.</p>
-
-<h2>Kontakt</h2>
-<p>Spørgsmål om privatliv: <a href="mailto:skockharvej@gmail.com">skockharvej@gmail.com</a></p>
-
-<hr>
-
-<h1>Milo · Privacy Policy</h1>
-<p class="updated">Last updated: 25 September 2026</p>
-
-<p>Milo is a running app that takes you from the couch to 5 km. In short: <strong>Milo sends none of your data to us or anyone else.</strong> There is no account, no ads, no analytics and no tracking.</p>
-
-<h2>What Milo stores, and where</h2>
-<ul>
-  <li><strong>Your plan and settings</strong> (step, rhythm, route length, reminders) are stored on your iPhone.</li>
-  <li><strong>Your runs</strong> (time, duration, distance, pace, route and Milo's evaluation) are stored on your iPhone.</li>
-  <li>If iCloud is on for Milo, your plan and runs sync through <strong>your own private iCloud</strong>. We can't access them.</li>
-</ul>
-
-<h2>Location</h2>
-<p>Milo uses your location <strong>only while a run is in progress</strong>, to measure distance, pace and route, to see whether you walked during run intervals, and to know when you're back home. This includes while the screen is locked during the run. It is stored only as the route of your run and doesn't leave your device (other than your own iCloud, see above). You can run without GPS.</p>
-
-<h2>Apple Health</h2>
-<p>If you allow it, Milo saves your runs to Apple Health as workouts with distance and route, so they show up in Fitness and can be imported by other apps you give access (such as Strava). Runs you start on Apple Watch are saved by the watch, with heart rate and active energy. Milo <strong>only reads</strong> your heart rate, and only on the watch while a run is in progress, to show it on screen. Milo doesn't read any other data from Apple Health. Apple Health data is never used for advertising or shared with others. You can turn this off in Milo's Settings, and manage access in Settings → Privacy &amp; Security → Health → Milo.</p>
-
-<h2>Apple Watch</h2>
-<p>If you start a run on Apple Watch, the watch uses its location during the run and sends it straight to Milo on your iPhone, which follows the run. The watch and the iPhone talk to each other directly over Apple's link between them, not through us. The watch keeps your next training so the watch face can show it.</p>
-
-<h2>Purchases</h2>
-<p>Milo Plus is bought through Apple. Apple handles the payment, and Milo gets no payment details; the app only learns whether you have Milo Plus.</p>
-
-<h2>Reminders</h2>
-<p>Training reminders are local notifications scheduled by your iPhone. No server is involved.</p>
-
-<h2>Deleting your data</h2>
-<p>Delete a run in Milo under Progress → History (swipe left). "Reset plan" in Settings starts your plan over. Deleting the app deletes everything it stored on your iPhone. If iCloud is on, delete Milo's copy in iCloud under Settings → [your name] → iCloud → Manage Storage → Milo. Workouts saved to Apple Health are deleted in the Health app.</p>
-
-<h2>Children</h2>
-<p>Milo doesn't collect data about anyone, including children.</p>
-
-<h2>Contact</h2>
-<p>Privacy questions: <a href="mailto:skockharvej@gmail.com">skockharvej@gmail.com</a></p>
-
+<script>
+  (function () {
+    var root = document.documentElement;
+    function stored() { try { return localStorage.getItem("milo-lang"); } catch (e) { return null; } }
+    function store(lang) { try { localStorage.setItem("milo-lang", lang); } catch (e) {} }
+    function apply(lang) {
+      root.dataset.lang = lang;
+      root.lang = lang;
+      document.title = lang === "da" ? "Milo · Din løbemakker" : "Milo · Your run buddy";
+      document.querySelectorAll("img[data-img]").forEach(function (img) {
+        img.src = "img/" + lang + "/" + img.dataset.img + ".jpg";
+      });
+    }
+    var first = stored() || ((navigator.language || "da").toLowerCase().indexOf("da") === 0 ? "da" : "en");
+    apply(first);
+    document.getElementById("lang").addEventListener("click", function () {
+      var next = root.dataset.lang === "da" ? "en" : "da";
+      store(next);
+      apply(next);
+    });
+  })();
+</script>
 </body>
 </html>
